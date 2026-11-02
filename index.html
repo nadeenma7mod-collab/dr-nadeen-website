@@ -1,1 +1,67 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f2e9"><meta name="description" content="الصفحة الرسمية للدكتورة نادين"><title>د. نادين | الصفحة الرسمية</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body><div class="ambient one"></div><div class="ambient two"></div><header class="topbar"><a class="brand" href="#"><img src="temporary-logo.svg" alt="" class="brand-mark"><span>DR. NADEEN</span></a><button id="languageSwitch" class="language-switch"><span>◎</span><b id="languageLabel">EN</b></button></header><main class="page"><section class="hero"><div class="copy"><div class="eyebrow"><i></i><span data-i18n="eyebrow">الصفحة الرسمية</span></div><h1><span data-i18n="welcome">مرحبًا بكم، أنا</span><br><strong data-i18n="doctorName">د. نادين</strong></h1><p class="intro" data-i18n="intro">مساحة تجمع حضوري الرقمي وكل ما أشاركه معكم.</p><div class="note"><i></i><span data-i18n="note">تابعوني عبر منصاتي الرسمية</span></div></div><div class="portrait-wrap"><div class="halo"></div><img class="portrait" src="temporary-doctor.svg" alt="صورة مؤقتة للدكتورة نادين"><div class="caption"><b>✳</b><span data-i18n="caption">حضور مهني • تواصل معرفي</span></div></div><div class="watermark">N.</div></section><section class="social"><div class="heading"><div><small data-i18n="kicker">اكتشفوا المزيد</small><h2 data-i18n="follow">تابعوني على منصاتي</h2></div><span>01 — 05</span></div><div id="socialGrid" class="grid"></div></section><footer><img src="temporary-logo.svg" alt=""><span data-i18n="footer">© جميع الحقوق محفوظة للدكتورة نادين</span></footer></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>د. نادين محمود | الصفحة الرسمية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="الصفحة الرئيسية"><img id="brandLogo" src="temporary-logo.svg" alt="شعار الدكتورة"><span id="brandName">DR. NADEEN</span></a>
+    <button id="langToggle" class="language">EN <span>↗</span></button>
+  </header>
+  <main id="publicPage" class="page-shell">
+    <section class="hero">
+      <div class="portrait-wrap"><img id="doctorAvatar" src="temporary-doctor.svg" alt="صورة د. نادين"></div>
+      <div class="eyebrow"><span class="eyebrow-dot"></span><span id="eyebrowText">الصفحة الرسمية</span></div>
+      <h1 id="doctorName">د. نادين محمود</h1>
+      <p id="doctorBio" class="bio">أهلاً بكم في منصاتي الرسمية</p>
+      <div class="hero-rule"><span></span></div>
+    </section>
+    <section class="social-section">
+      <div class="section-heading"><div><p class="section-kicker" id="sectionKicker">CONNECT</p><h2 id="sectionTitle">تابعوني عبر منصاتي</h2></div><span class="section-count" id="platformCount">04 PLATFORMS</span></div>
+      <div id="socialLinks" class="social-list" aria-live="polite"></div>
+    </section>
+    <footer><span id="footerText">© <span id="year"></span> د. نادين محمود — جميع الحقوق محفوظة</span><button id="adminEntry" class="admin-entry">إدارة الموقع</button></footer>
+  </main>
+
+  <main id="authPage" class="admin-shell hidden">
+    <div class="admin-brand"><img src="temporary-logo.svg" alt=""><div><b>DR. NADEEN</b><small>SECURE SITE MANAGEMENT</small></div></div>
+    <section class="admin-card auth-card">
+      <p class="section-kicker">PRIVATE ACCESS</p><h1>دخول لوحة الإدارة</h1><p class="muted">الدخول مخصص لحساب الدكتورة المصرّح له فقط.</p>
+      <label>البريد الإلكتروني<input id="loginEmail" type="email" autocomplete="username" placeholder="name@example.com"></label>
+      <label>كلمة المرور<input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+      <button id="loginButton" class="primary-button">تسجيل الدخول</button><p id="authMessage" class="message" role="status"></p>
+      <button id="backPublic" class="text-button">العودة إلى الموقع</button>
+    </section>
+  </main>
+
+  <main id="dashboard" class="admin-shell hidden">
+    <header class="dashboard-header"><div class="admin-brand"><img src="temporary-logo.svg" alt=""><div><b>لوحة تحكم د. نادين</b><small>MANAGE YOUR WEBSITE</small></div></div><button id="logoutButton" class="text-button">تسجيل الخروج</button></header>
+    <div class="dashboard-grid">
+      <aside class="admin-nav"><button class="nav-item active" data-tab="profile">الملف الشخصي</button><button class="nav-item" data-tab="accounts">المنصات والحسابات</button><button class="nav-item" data-tab="design">التصميم والألوان</button></aside>
+      <section class="admin-card editor">
+        <div class="tab-panel" id="tab-profile"><p class="section-kicker">PROFILE</p><h2>الملف الشخصي</h2>
+          <label>الاسم بالعربية<input id="editName" placeholder="د. نادين محمود"></label><label>الاسم بالإنجليزية<input id="editNameEn" placeholder="Dr. Nadeen Mahmoud"></label>
+          <label>النبذة بالعربية<textarea id="editBio" rows="3"></textarea></label><label>النبذة بالإنجليزية<textarea id="editBioEn" rows="3"></textarea></label>
+          <div class="upload-row"><label>الصورة الشخصية<input id="avatarUpload" type="file" accept="image/*"></label><label>الشعار<input id="logoUpload" type="file" accept="image/*"></label></div>
+          <button id="saveProfile" class="primary-button">حفظ الملف الشخصي</button>
+        </div>
+        <div class="tab-panel hidden" id="tab-accounts"><p class="section-kicker">SOCIAL ACCOUNTS</p><h2>المنصات والحسابات</h2><p class="muted">عدّلي اسم الحساب والصورة وعدد المتابعين والرابط. الأعداد اليدوية تظل واضحة أنها مُدخلة يدويًا.</p><div id="accountEditors"></div><button id="saveAccounts" class="primary-button">حفظ بيانات المنصات</button></div>
+        <div class="tab-panel hidden" id="tab-design"><p class="section-kicker">VISUAL IDENTITY</p><h2>التصميم والألوان</h2>
+          <label>اللون الأساسي<input id="primaryColor" type="color" value="#456b5d"></label><label>لون الخلفية<input id="backgroundColor" type="color" value="#f6f5ef"></label><label>لون النص<input id="textColor" type="color" value="#24342e"></label>
+          <label>شكل البطاقات<select id="cardStyle"><option value="soft">ناعمة</option><option value="outlined">بإطار</option><option value="minimal">بسيطة</option></select></label>
+          <button id="saveDesign" class="primary-button">حفظ التصميم</button>
+        </div>
+        <p id="dashboardMessage" class="message" role="status"></p>
+      </section>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script><script src="app.js"></script>
+</body></html>

@@ -100,9 +100,13 @@
       profile.name=$("editName").value.trim();profile.name_en=$("editNameEn").value.trim();profile.bio=$("editBio").value.trim();profile.bio_en=$("editBioEn").value.trim();
       const av=$("avatarUpload").files[0],logo=$("logoUpload").files[0];if(av)profile.avatar_url=await uploadImage(av,"profile");if(logo)profile.logo_url=await uploadImage(logo,"brand");
       const payload={...profile,updated_at:new Date().toISOString()};delete payload.id;
-      const {data:existing}=await client.from("profiles").select("id").limit(1).maybeSingle();
-      let result=existing?await client.from("profiles").update(payload).eq("id",existing.id):await client.from("profiles").insert(payload);
+      const {data:existing,error:lookupError}=await client.from("profiles").select("id").limit(1).maybeSingle();
+      if(lookupError)throw lookupError;
+      const result=existing
+        ?await client.from("profiles").update(payload).eq("id",existing.id).select("id").maybeSingle()
+        :await client.from("profiles").insert(payload).select("id").maybeSingle();
       if(result.error)throw result.error;
+      if(!result.data)throw new Error("لم يتم تحديث سجل الملف الشخصي. تحققي من صلاحيات RLS.");
       $("dashboardMessage").textContent="تم حفظ الملف الشخصي.";await loadPublic();
     }catch(e){$("dashboardMessage").textContent="لم يتم الحفظ: "+(e.message||"تحققي من إعدادات التخزين والصلاحيات.");}
   }
@@ -112,8 +116,11 @@
       document.querySelectorAll("#accountEditors input").forEach(input=>{const a=accounts[Number(input.dataset.index)];a[input.dataset.key]=input.type==="checkbox"?input.checked:input.type==="number"?Number(input.value):input.value.trim()});
       for(const a of accounts){
         const payload={title:a.title,url:a.url,icon:a.platform,platform:a.platform,username:a.username,followers_count:String(a.followers_count||""),account_avatar_url:a.account_avatar_url||"",sort_order:Number(a.sort_order)||0,is_active:a.is_active!==false,updated_at:new Date().toISOString()};
-        let result=a.id?await client.from("links").update(payload).eq("id",a.id):await client.from("links").insert(payload);
+        let result=a.id
+          ?await client.from("links").update(payload).eq("id",a.id).select("id").maybeSingle()
+          :await client.from("links").insert(payload).select("id").maybeSingle();
         if(result.error)throw result.error;
+        if(!result.data)throw new Error("لم يتم تحديث حساب "+(a.title||a.platform)+". تحققي من صلاحيات RLS.");
       }
       $("dashboardMessage").textContent="تم حفظ بيانات المنصات.";await loadPublic();await loadAdminData();
     }catch(e){$("dashboardMessage").textContent="لم يتم الحفظ: "+(e.message||"راجعي إعدادات قاعدة البيانات.");}
@@ -122,9 +129,15 @@
     try{
       profile.primary_color=$("primaryColor").value;profile.background_color=$("backgroundColor").value;profile.text_color=$("textColor").value;profile.card_style=$("cardStyle").value;
       const payload={...profile,updated_at:new Date().toISOString()};delete payload.id;
-      const {data:existing}=await client.from("profiles").select("id").limit(1).maybeSingle();
-      const result=existing?await client.from("profiles").update(payload).eq("id",existing.id):await client.from("profiles").insert(payload);
-      if(result.error)throw result.error;$("dashboardMessage").textContent="تم حفظ التصميم.";render();
+      const {data:existing,error:lookupError}=await client.from("profiles").select("id").limit(1).maybeSingle();
+      if(lookupError)throw lookupError;
+      const result=existing
+        ?await client.from("profiles").update(payload).eq("id",existing.id).select("id").maybeSingle()
+        :await client.from("profiles").insert(payload).select("id").maybeSingle();
+      if(result.error)throw result.error;
+      if(!result.data)throw new Error("لم يتم تحديث سجل التصميم. تحققي من صلاحيات RLS.");
+      $("dashboardMessage").textContent="تم حفظ التصميم.";
+      await loadPublic();await loadAdminData();
     }catch(e){$("dashboardMessage").textContent="تعذر حفظ التصميم: "+(e.message||"تحققي من قاعدة البيانات.");}
   };
   loadPublic();

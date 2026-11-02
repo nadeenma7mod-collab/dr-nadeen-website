@@ -1,7 +1,8 @@
-# Dr. Nadeen Hub Starter
-هذه نسخة واجهة أولية للمعاينة وليست نسخة إنتاج.
-- index.html: الصفحة العامة ولوحة تجريبية.
-- styles.css: التصميم.
-- app.js: تخزين محلي في المتصفح.
-- supabase-schema.sql: مخطط أولي.
-تنبيه: تسجيل الدخول التجريبي غير آمن والبيانات لا تتزامن مع Supabase. لا تنشر لوحة الإدارة قبل ربط Supabase Auth واختبار RLS. لا تضع secret/service_role key في كود المتصفح. استخدم publishable key فقط مع سياسات RLS صحيحة.
+# Dr Nadeen — Premium Medical v1
+- Bilingual Arabic/English landing page.
+- Premium Medical palette: ivory, sage green and muted gold.
+- Temporary portrait and logo are in `assets/`.
+- WhatsApp, Telegram, booking and contact buttons are intentionally omitted.
+- Social account URLs are blank placeholders in `app.js`; add only verified official profile URLs.
+- Public landing-page preview only. No admin login is included in this version.
+- Never add Supabase secret/service-role keys to this repository.
